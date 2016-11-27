@@ -45,7 +45,7 @@
 			</div>
 		</div>
 	</nav>
-	<s:debug />
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-1"></div>

@@ -1,0 +1,69 @@
+[1mdiff --git a/Blog b/Blog[m
+[1mdeleted file mode 160000[m
+[1mindex 261d6aa..0000000[m
+[1m--- a/Blog[m
+[1m+++ /dev/null[m
+[36m@@ -1 +0,0 @@[m
+[31m-Subproject commit 261d6aa35d393c4b68313f30ed9c97279bb63834[m
+[1mdiff --git a/acticle.jsp b/acticle.jsp[m
+[1mindex 543aed9..ccf1077 100644[m
+[1m--- a/acticle.jsp[m
+[1m+++ b/acticle.jsp[m
+[36m@@ -99,7 +99,7 @@[m
+ 		</style>[m
+ 	</head>[m
+ 	<body style="background: url(img/body_bg.jpg) repeat center top;font-size: 12px;font-family:microsoft yahei,Arial,Console,Verdana,Courier New">[m
+[31m-		<s:debug></s:debug>[m
+[32m+[m[41m		[m
+ 		<jsp:include page="sidebar.jsp"></jsp:include>[m
+ 		<jsp:include page="top.jsp"></jsp:include>[m
+ 		<div class="container">[m
+[1mdiff --git a/index.jsp b/index.jsp[m
+[1mindex f62720b..0756c9c 100644[m
+[1m--- a/index.jsp[m
+[1m+++ b/index.jsp[m
+[36m@@ -45,7 +45,7 @@[m
+ 		</nav>[m
+ 			<div class="container">[m
+ 				<div class="row">[m
+[31m-				<s:debug/>[m
+[32m+[m
+ 					<div class="col-md-9">[m
+ 			           <div class="list-group">[m
+ 			           		<s:iterator var="s" value="#session.pageBean.list">[m
+[1mdiff --git a/post.jsp b/post.jsp[m
+[1mindex 9f042d3..9cdc65b 100644[m
+[1m--- a/post.jsp[m
+[1m+++ b/post.jsp[m
+[36m@@ -45,7 +45,7 @@[m
+ 			</div>[m
+ 		</div>[m
+ 	</nav>[m
+[31m-	<s:debug />[m
+[32m+[m
+ 	<div class="container">[m
+ 		<div class="row">[m
+ 			<div class="col-md-1"></div>[m
+[1mdiff --git a/regist.jsp b/regist.jsp[m
+[1mindex 8376a1b..a4ef0c7 100644[m
+[1m--- a/regist.jsp[m
+[1m+++ b/regist.jsp[m
+[36m@@ -155,7 +155,7 @@[m
+ 			}[m
+ 		</style>[m
+ 	</head>[m
+[31m-	<s:debug/>[m
+[32m+[m
+ 	<body style="background-color: #e7ecef; text-align:center;">[m
+ 		<div class="righttabs-1">[m
+ 			<a href="#"><img style="margin-bottom:15px" src="view/write_blog.png"></a>[m
+[1mdiff --git "a/\350\257\273\346\210\221\357\274\201.txt" "b/\350\257\273\346\210\221\357\274\201.txt"[m
+[1mindex cf5c5eb..c4d986c 100644[m
+[1m--- "a/\350\257\273\346\210\221\357\274\201.txt"[m
+[1m+++ "b/\350\257\273\346\210\221\357\274\201.txt"[m
+[36m@@ -1 +1,2 @@[m
+[31m-Çë·Åµ½TomcatÖÐµÄwebappsÖÐÔËÐÐ[m
+\ No newline at end of file[m
+[32m+[m[32mÇëÏÈÐÞ¸Äapplication.xmlÊý¾Ý¿âµÄÅäÖÃ£¨Ö»ÒªµÇÂ¼Êý¾Ý¿âµÄÕËºÅÃÜÂëºÍ´´½¨Êý¾Ý¿âblog¼´¿É£¬ÎÞÐè´´½¨±í£©£¬[m
+[32m+[m[32mÔÙ·Åµ½TomcatÖÐµÄwebappsÖÐÔËÐÐ[m
+\ No newline at end of file[m

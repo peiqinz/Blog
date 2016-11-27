@@ -45,7 +45,7 @@
 		</nav>
 			<div class="container">
 				<div class="row">
-				<s:debug/>
+
 					<div class="col-md-9">
 			           <div class="list-group">
 			           		<s:iterator var="s" value="#session.pageBean.list">

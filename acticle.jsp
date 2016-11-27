@@ -99,7 +99,7 @@
 		</style>
 	</head>
 	<body style="background: url(img/body_bg.jpg) repeat center top;font-size: 12px;font-family:microsoft yahei,Arial,Console,Verdana,Courier New">
-		<s:debug></s:debug>
+		
 		<jsp:include page="sidebar.jsp"></jsp:include>
 		<jsp:include page="top.jsp"></jsp:include>
 		<div class="container">

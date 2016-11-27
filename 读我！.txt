@@ -1,1 +1,2 @@
-请放到Tomcat中的webapps中运行
+请先修改application.xml数据库的配置（只要登录数据库的账号密码和创建数据库blog即可，无需创建表），
+再放到Tomcat中的webapps中运行

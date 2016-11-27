@@ -155,7 +155,7 @@
 			}
 		</style>
 	</head>
-	<s:debug/>
+
 	<body style="background-color: #e7ecef; text-align:center;">
 		<div class="righttabs-1">
 			<a href="#"><img style="margin-bottom:15px" src="view/write_blog.png"></a>
