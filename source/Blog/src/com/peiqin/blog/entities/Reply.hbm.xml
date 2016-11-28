@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-10 15:47:58 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peiqin.blog.entities.Reply" table="REPLY">
+        <id name="rid" type="java.lang.Integer">
+            <column name="rid" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="post" class="com.peiqin.blog.entities.Post" lazy="false">
+            <column name="pid" />
+        </many-to-one>
+        <many-to-one name="user" class="com.peiqin.blog.entities.User" lazy="false">
+            <column name="uid" />
+        </many-to-one>
+        <property name="neirong" type="java.lang.String">
+            <column name="CONTAINER" />
+        </property>
+        <property name="replyday" type="java.lang.String">
+            <column name="REPLYDAY" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-18 10:56:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peiqin.blog.entities.FileInfo" table="FILEINFO">
+        <id name="fid" type="java.lang.Integer">
+            <column name="FID" />
+            <generator class="native" />
+        </id>
+        <property name="fname" type="java.lang.String">
+            <column name="FNAME" />
+        </property>
+        <many-to-one name="user" class="com.peiqin.blog.entities.User" lazy="false">
+            <column name="uid" />
+        </many-to-one>
+        <property name="fplace" type="java.lang.String">
+            <column name="FPLACE" />
+        </property>
+        <property name="dtime" type="java.lang.Integer">
+            <column name="DTIME" />
+        </property>
+        <property name="contentType" type="java.lang.String">
+        	<column name="CONTENTTYPE"></column>
+        </property>
+    </class>
+</hibernate-mapping>

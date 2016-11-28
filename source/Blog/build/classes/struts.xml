@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+<constant name="struts.multipart.maxSize" value="2097152000"/>
+	<constant name="struts.custom.i18n.resources" value="i18n"></constant>
+	 <constant name="struts.i18n.encoding" value="utf-8"></constant>
+	<package name="default" namespace="/" extends="json-default">
+		<!-- 配置自定义拦截器 -->
+		<interceptors>
+			
+			<interceptor name="authority" class="com.peiqin.blog.interceptor.AuthorityInterceptor"></interceptor>
+		
+			<interceptor-stack name="peiqinStack">
+				<interceptor-ref name="authority">
+					<param name="includeMethods">
+						postActicle,beforePost,saveReply,findUserByUid,uploadPhoto,uploadFile,modifyPassword
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="paramsPrepareParamsStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="peiqinStack"></default-interceptor-ref>
+		
+		<global-results>
+			<result name="login">/login.jsp</result>
+			<result name="regist">/regist.jsp</result>
+			<result name="index" type="redirectAction">index</result>
+		</global-results>
+		
+		<action name="reply_*" class="com.peiqin.blog.action.ReplyAction" method="{1}">
+			<result name="success" type="redirectAction">
+				<param name="actionName">post_viewActicle</param>
+				<param name="pid">${pid}</param>
+			</result>
+		</action>
+		
+		<action name="user_*" class="com.peiqin.blog.action.UserAction" method="{1}">
+			<result name="loginSuccess" type="redirectAction">index</result>
+			<result name="registSuccess" type="redirectAction">index</result>
+			<result name="loginFail" type="redirectAction">index</result>
+			<result name="information">/myInfomation.jsp</result>
+			<result name="myInfomation" type="redirectAction">user_findUserByUid</result>
+			<result name="passwordwrong" type="redirect">/myInfomation.jsp</result>
+			<result type="json" name="ajax-success">
+				<param name="root">map</param>
+			</result>
+		</action>
+		
+		<action name="myUpload_*" class="com.peiqin.blog.action.UploadDownloadAction" method="{1}">
+			<interceptor-ref name="peiqinStack"></interceptor-ref>
+			<interceptor-ref name="fileUpload">
+                <param name="maximumSize">362484750</param>
+            </interceptor-ref>
+			<result name="myInfomation" type="redirectAction">user_findUserByUid</result>
+			<result name="success" type="stream">
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="inputName">downloadFile</param>
+                <param name="bufferSize">2097152</param>
+            </result>
+            <result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="post_*" class="com.peiqin.blog.action.PostAction" method="{1}">
+			<result name="beforePost">/post.jsp</result>
+			<result name="postSuccess" type="redirectAction">index</result>
+			<result name="acticle">/acticle.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="findPostByCid" class="com.peiqin.blog.action.CategoryAction">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="index" class="com.peiqin.blog.action.IndexAction">
+			<result name="index">/index.jsp</result>
+		</action>
+		
+		<action name="checkImg" class="com.peiqin.blog.action.CheckImgAction"></action>
+		
+		<action name="uploadImg" class="com.peiqin.blog.action.UploadImgAction"></action>
+		
+		<action name="getConfig" class="/WEB-INF/GetConfigAction"></action>
+	</package>	
+</struts>

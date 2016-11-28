@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-10 15:47:58 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.peiqin.blog.entities.Post" table="POST">
+        <id name="pid" type="java.lang.Integer">
+            <column name="pid" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="category" class="com.peiqin.blog.entities.Category" lazy="false">
+            <column name="cid" />
+        </many-to-one>
+        <many-to-one name="user" lazy="false" class="com.peiqin.blog.entities.User">
+            <column name="uid" />
+        </many-to-one>
+        <property name="title" type="java.lang.String">
+            <column name="TITLE" />
+        </property>
+        <property name="neirong" type="java.lang.String">
+            <column name="CONTAINER" />
+        </property>
+        <property name="postDay" type="java.lang.String">
+            <column name="POSTDAY" />
+        </property>
+		<property name="summary" type="java.lang.String">
+			<column name="SUMMARY"></column>
+		</property>
+		<property name="view" type="java.lang.Integer">
+			<column name="VIEW"></column>
+		</property>
+        <set name="replies" inverse="true" lazy="false">
+            <key>
+                <column name="pid" />
+            </key>
+            <one-to-many class="com.peiqin.blog.entities.Reply" />
+        </set>
+    </class>
+</hibernate-mapping>
