@@ -20,5 +20,8 @@
         <property name="dtime" type="java.lang.Integer">
             <column name="DTIME" />
         </property>
+        <property name="contentType" type="java.lang.String">
+        	<column name="CONTENTTYPE"></column>
+        </property>
     </class>
 </hibernate-mapping>

@@ -28,6 +28,7 @@
 		<global-results>
 			<result name="login">/login.jsp</result>
 			<result name="regist">/regist.jsp</result>
+			<result name="index" type="redirectAction">index</result>
 		</global-results>
 		
 		<action name="reply_*" class="com.peiqin.blog.action.ReplyAction" method="{1}">
@@ -38,9 +39,9 @@
 		</action>
 		
 		<action name="user_*" class="com.peiqin.blog.action.UserAction" method="{1}">
-			<result name="loginSuccess" type="redirect">/index.jsp</result>
+			<result name="loginSuccess" type="redirectAction">index</result>
 			<result name="registSuccess" type="redirectAction">index</result>
-			<result name="loginFail">/login.jsp</result>
+			<result name="loginFail" type="redirectAction">index</result>
 			<result name="information">/myInfomation.jsp</result>
 			<result name="myInfomation" type="redirectAction">user_findUserByUid</result>
 			<result name="passwordwrong" type="redirect">/myInfomation.jsp</result>
@@ -54,22 +55,24 @@
 			<interceptor-ref name="fileUpload">
                 <param name="maximumSize">362484750</param>
             </interceptor-ref>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="myInfomation" type="redirectAction">user_findUserByUid</result>
 			<result name="success" type="stream">
                 <param name="contentDisposition">attachment;filename="${fileName}"</param>
                 <param name="inputName">downloadFile</param>
                 <param name="bufferSize">2097152</param>
-      			<param name="contentLength">${contentLength}</param>
             </result>
             <result name="error">/error.jsp</result>
 		</action>
 		
 		<action name="post_*" class="com.peiqin.blog.action.PostAction" method="{1}">
 			<result name="beforePost">/post.jsp</result>
-			<result name="postSuccess">/index.jsp</result>
+			<result name="postSuccess" type="redirectAction">index</result>
 			<result name="acticle">/acticle.jsp</result>
 			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="findPostByCid" class="com.peiqin.blog.action.CategoryAction">
+			<result name="success">/index.jsp</result>
 		</action>
 		
 		<action name="index" class="com.peiqin.blog.action.IndexAction">

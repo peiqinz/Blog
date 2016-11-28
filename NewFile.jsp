@@ -1,15 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<form action="myUpload.action" method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <input type="submit" value="submit">
-    </form>
-</body>
-</html>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>  
+<%  
+String path = request.getContextPath();  
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
+%>  
+  
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">  
+<html>  
+  <head>  
+    <base href="<%=basePath%>">  
+      
+    <title>My JSP 'filedownload.jsp' starting page</title>  
+      
+    <meta http-equiv="pragma" content="no-cache">  
+    <meta http-equiv="cache-control" content="no-cache">  
+    <meta http-equiv="expires" content="0">      
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">  
+    <meta http-equiv="description" content="This is my page">  
+    <!-- 
+    <link rel="stylesheet" type="text/css" href="styles.css"> 
+    -->  
+  
+  </head>  
+    
+  <body>  
+    
+    <h2>文件下载内容：</h2><br/>  
+    Dream.jpg:<a href="FileDownload.action?number=1">点击下载</a><br/>  
+    jd2chm源码生成chm格式文档.rar:<a href="FileDownload.action?number=2">点击下载2</a>  
+      
+      
+  </body>  
+</html>  

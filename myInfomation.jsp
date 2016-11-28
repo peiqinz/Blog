@@ -72,9 +72,8 @@
 			<div class="container">
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-							<li ><a href="index">首页</a></li>
-							<li><a href="#">博客专栏</a></li>
-							<li class="active"><a href="user_findUserByUid">我的博客</a></li>
+						<li ><a href="index">首页</a></li>
+						<li class="active"><a href="user_findUserByUid">我的博客</a></li>
 					</ul>
 				</div>
 			</div>

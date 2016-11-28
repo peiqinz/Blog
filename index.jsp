@@ -36,16 +36,17 @@
 			<div class="container">
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-							<li class="active"><a href="#">首页</a></li>
-							<li><a href="#">博客专栏</a></li>
-							<li><a href="#">我的博客</a></li>
+							<li class="active"><a href="index">首页</a></li>
+							<s:if test="#session."></s:if>
+							<s:if test="#session.loginuser.userphoto != null">
+								<li><a href="user_findUserByUid">我的博客</a></li>
+							</s:if>
 					</ul>
 				</div>
 			</div>
 		</nav>
 			<div class="container">
 				<div class="row">
-
 					<div class="col-md-9">
 			           <div class="list-group">
 			           		<s:iterator var="s" value="#session.pageBean.list">
@@ -68,16 +69,12 @@
 						           			<span class="glyphicon glyphicon-th-list"></span>
 						           			&nbsp;
 						           			<small><s:property value="#s.category.cname"/></small>
-						           			&nbsp;&nbsp;&nbsp;&nbsp;
-						           			<span class="glyphicon glyphicon-leaf"></span>
-						           			&nbsp;
-						           			<small>移动开发</small>
 						           			
 											<small style="float: right;">
 												<span style="display: inline;">
 												<span class="glyphicon glyphicon-eye-open"></span>
 												&nbsp;
-												<span class="badge">20</span>
+												<span class="badge"><s:property value="#s.view"/></span>
 											</small>
 											<small style="float: right;margin-right: 20px;"><s:property value="#s.postDay"/></small>
 						           		 </p>
@@ -121,19 +118,24 @@
 			           	</div>
 			           </div>
 			           <div class="foot-pagination">
-			           	  <span class="text-muted" style="position:absolute;margin-left:20%;margin-top:30px;font-size: 10px;">共几条共几页</span>
+			           	  <span class="text-muted" style="position:absolute;margin-left:20%;margin-top:30px;font-size: 10px;">第<s:property value="#session.pageBean.page"/>条，共<s:property value="#session.pageBean.totalPage"/>页</span>
 				           <nav>
 				           	<ul class="pagination" style="margin-left:33%;">
-				           		<li class="active"><a href="#">第一页</a></li>
-				           		<li class="disabled"><a href="#">&laquo;</a></li>
-				           		<li><a href="#">1</a></li>
-				           		<li><a href="#">2</a></li>
-				           		<li><a href="#">3</a></li>
-				           		<li><a href="#">4</a></li>
-				           		<li><a href="#">5</a></li>
-				           		<li><a href="#">6</a></li>
-				           		<li><a href="#">&raquo;</a></li>
-				           		<li><a href="#">尾页</a></li>
+				           		<s:if test="#session.pageBean.page == 1">
+					           		<li class="disabled"><a href="#">&laquo;</a></li>
+					           		<li class="active"><a href="#">1</a></li>
+				           		</s:if>
+								<s:else>
+					           		<li><a href="index.action?page=<s:property value='#session.pageBean.pageBean-1'/>">&laquo;</a></li>
+					           		<li><a href="index.action?page=1">1</a></li>
+								</s:else>		
+				           		<li><a href="index.action?page=2">2</a></li>
+				           		<li><a href="index.action?page=3">3</a></li>
+				           		<li><a href="index.action?page=4">4</a></li>
+				           		<li><a href="index.action?page=5">5</a></li>
+				           		<li><a href="index.action?page=6">6</a></li>
+				           		<li><a href="index.action?page=<s:property value='#session.pageBean.pageBean+1'/>">&raquo;</a></li>
+				           		<li><a href="index.action?page=<s:property value='#session.pageBean.totalPage'/>">尾页</a></li>
 				           	</ul>
 				           </nav>
 			           </div>
@@ -154,9 +156,30 @@
 	     		   	  	<div class="panel-body" style="padding-bottom: 0px;padding-top: 0px;">
 	     		   	  		<p style="padding-top:10px;">
 	     		   	  			<span class="glyphicon glyphicon-phone" style="margin:10px 0px;font-size: 28px;color:#FF8800;display: inline-block;"></span>
-								<span><a href="#" class="panelspana">移动开发</a></span>
-								<span class="glyphicon glyphicon-list-alt" style="margin:10px 0px;font-size: 28px;color:#FF8800;display: inline-block;margin-left:80px;"></span>
-								<span style="margin-left: 5px;padding-bottom: 20px;"><a href="#" class="panelspana">web前端</a></span>
+								<span><a href="findPostByCid?cid=1&page=1" class="panelspana"><s:property value="#session.c1"/></a></span>
+	     		   	  			<span class="glyphicon glyphicon-th" style="margin:10px 0px;font-size: 28px;color:#FF8800;display: inline-block;margin-left:85px;margin-right:5px"></span>
+								<span><a href="findPostByCid?cid=2&page=1" class="panelspana"><s:property value="#session.c2"/></a></span>
+	     		   	  		</p>
+	     		   	  		<div style="border:1px dashed #DDDDDD;"></div>
+	     		   	  		<p style="padding-top:10px;">
+	     		   	  			<span class="glyphicon glyphicon-book" style="margin:10px 0px;font-size: 28px;color:#FF8800;display: inline-block;"></span>
+								<span><a href="findPostByCid?cid=3&page=1" class="panelspana"><s:property value="#session.c3"/></a></span>
+	     		   	  			<span class="glyphicon glyphicon-header" style="margin:10px 0px;font-size: 28px;color:#FF8800;display: inline-block;margin-left:85px;margin-right:5px"></span>
+								<span><a href="findPostByCid?cid=4&page=1" class="panelspana"><s:property value="#session.c4"/></a></span>
+	     		   	  		</p>
+	     		   	  		<div style="border:1px dashed #DDDDDD;"></div>
+	     		   	  		<p style="padding-top:10px;">
+	     		   	  			<span class="glyphicon glyphicon-globe" style="margin:10px 0px;font-size: 28px;color:#FF8800;display: inline-block;"></span>
+								<span><a href="findPostByCid?cid=5&page=1" class="panelspana"><s:property value="#session.c5"/></a></span>
+	     		   	  			<span class="glyphicon glyphicon-print" style="margin:10px 0px;font-size: 28px;color:#FF8800;display: inline-block;margin-left:85px;margin-right:5px"></span>
+								<span><a href="findPostByCid?cid=6&page=1" class="panelspana"><s:property value="#session.c6"/></a></span>
+	     		   	  		</p>
+	     		   	  		<div style="border:1px dashed #DDDDDD;"></div>
+	     		   	  		<p style="padding-top:10px;">
+	     		   	  			<span class="glyphicon glyphicon-calendar" style="margin:10px 0px;font-size: 28px;color:#FF8800;display: inline-block;"></span>
+								<span><a href="findPostByCid?cid=7&page=1" class="panelspana"><s:property value="#session.c7"/></a></span>
+	     		   	  			<span class="glyphicon glyphicon-cloud" style="margin:10px 0px;font-size: 28px;color:#FF8800;display: inline-block;margin-left:85px;margin-right:5px"></span>
+								<span><a href="findPostByCid?cid=8&page=1" class="panelspana"><s:property value="#session.c8"/></a></span>
 	     		   	  		</p>
 	     		   	  		<div style="border:1px dashed #DDDDDD;"></div>
 	     		   	  	</div>
@@ -194,16 +217,13 @@
 	     		   	  		<a class="expertpulla" href="#">热门排行榜</a>
 	     		   	  	</div>
 	     		   	  	<div class="panel-body" style="padding-bottom: 0px;padding-top: 0px;">
-	     		   	  		<p style="margin-top:15px;margin-bottom: 15px;">
-	     		   	  			<a href="#" class="hota" >
-	     		   	  			<span class="glyphicon glyphicon-chevron-right" style="font-size:10px;"></span>
-	     		   	  			Android中如何统计每一个APP的流..</a>
-	     		   	  		</p>
-	     		   	  		<p style="margin-top:15px;margin-bottom: 15px;">
-	     		   	  			<a href="#" class="hota">
-	     		   	  			<span class="glyphicon glyphicon-chevron-right" style="font-size:10px;"></span>
-	     		   	  			Android中如何统计每一个APP的流..</a>
-	     		   	  		</p>
+	     		   	  		<s:iterator var= "s" value="#session.hot">
+		     		   	  		<p style="margin-top:15px;margin-bottom: 15px;">
+		     		   	  			<a href="${pageContext.request.contextPath }/post_viewActicle?pid=<s:property value='#s.pid'/>" class="hota">
+		     		   	  			<span class="glyphicon glyphicon-chevron-right" style="font-size:10px;"></span>
+		     		   	  			<s:property value="#s.title"/></a>
+		     		   	  		</p>
+	     		   	  		</s:iterator>
 	     		   	  	</div>
 	     		   	  </div>
 	     		   	  <div class="panel panel-default" style="margin-top:10px;background-color:#FFFFFF;">
@@ -224,7 +244,7 @@
 	     		   	  
 				</div>
 			</div>
-			<div style="height: 33330px;"></div>
+			<div style="height:33px;"></div>
 			<jsp:include page="foot.jsp"></jsp:include>
 	</body>
 </html>

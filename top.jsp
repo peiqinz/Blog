@@ -32,7 +32,7 @@
 	<nav class="nav navbar-inverse" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#">博客</a>
+					<a class="navbar-brand" href="index.action">博客</a>
 					<button class="navbar-toggle" data-toggle="collapse" data-target="">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -48,7 +48,7 @@
 						</ul>
 					</s:if>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></li>
+						<li><a href="${pageContext.request.contextPath }/post_beforePost"><span class="glyphicon glyphicon-pencil"></span></a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<span class="glyphicon glyphicon-bell"></span>
@@ -80,9 +80,8 @@
 								<ul class="bs-menu dropdown-menu">
 									<li><a><s:property value="#session.loginuser.username"/></a>
 									<li><a href="user_findUserByUid">我的信息</a></li>
-									<li><a href="#">我的帖子</a></li>
-									<li class="divider"></li>
-									<li><a href="#">账号设置</a></li>
+									<li><a href="user_findUserByUid">账号设置</a></li>
+									<li><a href="user_logout">退出</a>
 								</ul>
 							</li>
 						</s:if>
